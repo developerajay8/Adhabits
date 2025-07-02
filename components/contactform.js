@@ -8,6 +8,7 @@ export default function ContactForm() {
     email: "",
     phone: "",
     platform: "",
+    message: "", // ✅ New field
   });
 
   const handleChange = (e) => {
@@ -17,23 +18,19 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, email, phone, platform } = formData;
+    const { name, email, phone, platform, message } = formData;
 
-    if (!name || !email || !phone || !platform) {
+    if (!name || !email || !phone || !platform || !message) {
       alert("Please fill in all fields.");
       return;
     }
 
-    const message = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0APlatform: ${platform}`;
-    const whatsappNumber = "919743140915"; // 👈 Your number with country code
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+    const finalMessage = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0APlatform: ${platform}%0AMessage:%0A${encodeURIComponent(message)}`;
 
-    try {
-      window.open(whatsappURL, "_blank");
-    } catch (error) {
-      console.error("Failed to open WhatsApp:", error);
-      alert("Unable to open WhatsApp.");
-    }
+    const whatsappNumber = "918824149670"; // 👈 Your number
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${finalMessage}`;
+
+    window.open(whatsappURL, "_blank");
   };
 
   return (
@@ -80,24 +77,41 @@ export default function ContactForm() {
             onChange={handleChange}
             className="bg-slate-800 text-white p-4 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           >
-            <option value="" disabled>
-              Select Your Platform
+            <option value="">Select Your Platform</option>
+            <option value="IDP">IDP</option>
+            <option value="BIZGURUKUL">BIZGURUKUL</option>
+            <option value="RICHIND">RICHIND</option>
+            <option value="FOREVER">FOREVER</option>
+            <option value="OTHER">OTHER</option>
+          </select>
+        </div>
+
+        {/* ✅ Select Message Dropdown */}
+        <div>
+          <select
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            className="w-full bg-slate-800 text-white p-4 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          >
+            <option value="">Select Your Message</option>
+            <option value={`Hello Rahman sir 👋 
+I’m interested in your Affiliate Ad Service!  
+Please book my 🗓 consultation call.  
+Looking forward to grow with AdHabits `}>
+            Hello Rahman sir 👋 
+I’m interested in your Affiliate Ad Service!  
+Please book my 🗓 consultation call.  
+Looking forward to grow with AdHabits 
             </option>
-            <option value="IDP" className="text-yellow-400">
-              IDP
+            <option value={`Hi Rahman sir 👋  
+I really want to grow through your ads service
+Please book my consultation call `}>
+              Hi Rahman sir 👋  
+I really want to grow through your ads service
+Please book my consultation call
             </option>
-            <option value="BIZGURUKUL" className="text-yellow-400">
-              BIZGURUKUL
-            </option>
-            <option value="RICHIND" className="text-yellow-400">
-              RICHIND
-            </option>
-            <option value="FOREVER" className="text-yellow-400">
-              FOREVER
-            </option>
-            <option value="OTHER" className="text-yellow-400">
-              OTHER
-            </option>
+            
           </select>
         </div>
 
