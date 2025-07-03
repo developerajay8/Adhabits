@@ -57,6 +57,9 @@ export default function AboutSection() {
               <div className="mr-5 bg-gradient-to-br from-slate-800 to-slate-700 p-6 rounded-2xl border border-amber-400/20">
                 <img src="/first.png" className="w-[160px] h-[100px]" alt="Image 5" />
               </div>
+              <div className="mr-5 bg-gradient-to-br from-slate-800 to-slate-700 p-6 rounded-2xl border border-amber-400/20">
+                <img src="/IMG_0727 copy.PNG" className="w-[160px] h-[100px]" alt="Image 5" />
+              </div>
             </div>
           </Marquee>
         </motion.div>
