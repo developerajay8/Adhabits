@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 
 export default function AboutSection() {
+  
   const logos = [
     { name: "iDigitalPreneur", src: "/placeholder.svg?height=60&width=150" },
     { name: "Bizgurukul", src: "/placeholder.svg?height=60&width=150" },

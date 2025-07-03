@@ -80,6 +80,8 @@ export default function ContactForm() {
             <option value="">Select Your Platform</option>
             <option value="IDP">IDP</option>
             <option value="BIZGURUKUL">BIZGURUKUL</option>
+            <option value="FOREVER">LEADSGURU</option>
+            <option value="FOREVER">MILLIONAIRETRACK</option>
             <option value="RICHIND">RICHIND</option>
             <option value="FOREVER">FOREVER</option>
             <option value="OTHER">OTHER</option>
