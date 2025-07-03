@@ -21,10 +21,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-
-      <body className={inter.className}>{children}</body>
-      <Head>
-        {/* Optional: For <noscript> fallback */}
+<Head>
+        {/* Noscript fallback for Meta Pixel */}
         <noscript>
           <img
             height="1"
@@ -34,13 +32,16 @@ export default function RootLayout({
           />
         </noscript>
       </Head>
+      
+      <body className={inter.className}>{children}</body>
+      
 
-      {/* ✅ Load Facebook Pixel using Script component */}
+       {/* Meta Pixel Script */}
       <Script id="facebook-pixel" strategy="afterInteractive">
         {`
           !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod ?
-            n.callMethod.apply(n, arguments) : n.queue.push(arguments)};
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
           if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
           n.queue=[];t=b.createElement(e);t.async=!0;
           t.src=v;s=b.getElementsByTagName(e)[0];
