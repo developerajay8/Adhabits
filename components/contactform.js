@@ -27,7 +27,7 @@ export default function ContactForm() {
 
     const finalMessage = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0APlatform: ${platform}%0AMessage:%0A${encodeURIComponent(message)}`;
 
-    const whatsappNumber = "918824149670"; // 👈 Your number
+    const whatsappNumber = "919610580359"; // 👈 Your number
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${finalMessage}`;
 
     window.open(whatsappURL, "_blank");
