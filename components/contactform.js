@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { fbq } from "@/lib/fbPixel"; // ✅ Import the pixel helper
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -8,7 +9,7 @@ export default function ContactForm() {
     email: "",
     phone: "",
     platform: "",
-    message: "", // ✅ New field
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -25,9 +26,12 @@ export default function ContactForm() {
       return;
     }
 
+    // ✅ FIRE FACEBOOK PIXEL EVENT
+    fbq("track", "Lead");
+
     const finalMessage = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0APlatform: ${platform}%0AMessage:%0A${encodeURIComponent(message)}`;
 
-    const whatsappNumber = "919610580359"; // 👈 Your number
+    const whatsappNumber = "919610580359";
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${finalMessage}`;
 
     window.open(whatsappURL, "_blank");
@@ -88,7 +92,6 @@ export default function ContactForm() {
           </select>
         </div>
 
-        {/* ✅ Select Message Dropdown */}
         <div>
           <select
             name="message"
@@ -97,23 +100,21 @@ export default function ContactForm() {
             className="w-full bg-slate-800 text-white p-4 rounded-lg border border-slate-700 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           >
             <option value="">Select Your Message</option>
-            <option value={`Hello Rahman sir 👋 
+            <option
+              value={`Hello Rahman sir 👋 
 I’m interested in your Affiliate Ad Service!  
 Please book my 🗓 consultation call.  
-Looking forward to grow with AdHabits `}>
-            Hello Rahman sir 👋 
-I’m interested in your Affiliate Ad Service!  
-Please book my 🗓 consultation call.  
-Looking forward to grow with AdHabits 
+Looking forward to grow with AdHabits `}
+            >
+              Hello Rahman sir 👋 I’m interested in your Affiliate Ad Service!
             </option>
-            <option value={`Hi Rahman sir 👋  
+            <option
+              value={`Hi Rahman sir 👋  
 I really want to grow through your ads service
-Please book my consultation call `}>
-              Hi Rahman sir 👋  
-I really want to grow through your ads service
-Please book my consultation call
+Please book my consultation call `}
+            >
+              Hi Rahman sir 👋 I really want to grow through your ads service
             </option>
-            
           </select>
         </div>
 
