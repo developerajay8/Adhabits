@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+import { FaInstagram } from "react-icons/fa"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -22,15 +23,21 @@ export default function Footer() {
             <span className="text-2xl font-bold text-white">AdHabits</span>
           </div>
 
+          <Link className="text-center" href="https://www.instagram.com/adhabits.in?igsh=MTlueHE4dm5mMjZ6Mw%3D%3D&utm_source=qr" target="_blank" passHref>
+      
+        <img src="/instagram-logo_3983929.png" className="w-[50px]" alt="" />
+ 
+    </Link>
+
           <div className="text-center md:text-left">
             <p className="text-gray-400 text-sm">© {currentYear} AdHabits. All rights reserved.</p>
           </div>
 
           <nav className="flex space-x-6">
-            <Link href="/privacy" className="text-gray-400 hover:text-amber-400 transition-colors duration-300 text-sm">
+            <Link href="/privacypolicy" className="text-gray-400 hover:text-amber-400 transition-colors duration-300 text-sm">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-amber-400 transition-colors duration-300 text-sm">
+            <Link href="/privacypolicy" className="text-gray-400 hover:text-amber-400 transition-colors duration-300 text-sm">
               Terms of Service
             </Link>
           </nav>
